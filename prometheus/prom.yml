@@ -6,6 +6,18 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:9090']
 
+  # EA_Voice Application Monitoring
+  - job_name: 'ea_voice'
+    scrape_interval: 30s
+    scrape_timeout: 10s
+    metrics_path: /api/monitoring/metrics
+    scheme: https
+    static_configs:
+      - targets: ['eavoice-production.up.railway.app']
+        labels:
+          service: ea_voice
+          environment: production
+
   # - job_name: 'example_api'
   #   scheme: http
   #   static_configs:
